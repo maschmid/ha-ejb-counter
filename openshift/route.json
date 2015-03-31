@@ -1,0 +1,10 @@
+{
+    "kind": "Route",
+    "apiVersion": "v1beta1",
+    "metadata": {
+        "name": "haejbcounter-route",
+    },
+    "id": "haejbcounter-route",
+    "host": "hejbc.cloudapps.example.com",
+    "serviceName": "haejbcounter-service"
+}

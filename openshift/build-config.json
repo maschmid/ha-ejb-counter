@@ -1,0 +1,34 @@
+{
+    "kind": "BuildConfig",
+    "apiVersion": "v1beta1",
+    "metadata": {
+        "name": "haejbcounterbld",
+    },
+    "parameters": {
+        "source": {
+            "type": "Git",
+            "git": {
+                "uri": "https://github.com/maschmid/ha-ejb-counter.git"
+            }
+        },
+        "strategy": {
+            "type": "STI",
+            "stiStrategy": {
+                "image": "docker-registry.usersys.redhat.com/cloud_enablement/openshift-jboss-eap:6.4",
+            }
+        },
+        "output": {
+            "to": {
+                "name": "haejbcounter-image"
+            }
+        }
+    },
+	"triggers": [
+		{
+			"generic": {
+				"secret": "secret101"
+			},
+			"type": "generic"
+		}
+	]
+}

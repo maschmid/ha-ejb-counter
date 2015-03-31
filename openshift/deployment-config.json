@@ -1,0 +1,62 @@
+{
+    "kind": "DeploymentConfig",
+    "apiVersion": "v1beta1",
+    "metadata": {
+        "name": "haejbcounter-deployment",
+    },
+    "triggers": [
+        {
+            "type": "ImageChange",
+            "imageChangeParams": {
+                "automatic": true,
+                "containerNames": [
+                    "haejbcounter"
+                ],
+                "from": {
+                    "name": "haejbcounter-image"
+                },
+                "tag": "latest"
+            }
+        }
+    ],
+    "template": {
+        "strategy": {
+            "type": "Recreate"
+        },
+        "controllerTemplate": {
+            "replicas": 3,
+            "replicaSelector": {
+                "name": "haejbcounter"
+            },
+            "podTemplate": {
+                "desiredState": {
+                    "manifest": {
+                        "version": "v1beta2",
+                        "id": "",
+                        "volumes": null,
+                        "containers": [
+                            {
+                                "name": "haejbcounter",
+                                "image": "haejbcounter-image",
+                                "ports": [
+                                    {
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "imagePullPolicy": "PullIfNotPresent",
+                            }
+                        ],
+                        "restartPolicy": {
+                            "always": {}
+                        },
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                },
+                "labels": {
+                    "name": "haejbcounter"
+                }
+            }
+        }
+    }
+}

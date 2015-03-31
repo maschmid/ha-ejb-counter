@@ -1,0 +1,12 @@
+{
+    "kind": "Service",
+    "id": "haejbcounter-service",
+    "apiVersion": "v1beta1",
+    "port": 80,
+    "protocol": "TCP",
+    "selector": {
+        "name": "haejbcounter"
+    },
+    "containerPort": 0,
+    "sessionAffinity": "None"
+}
